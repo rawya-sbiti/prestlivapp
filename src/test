@@ -1,0 +1,18 @@
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                   moduleName:@"prestlevapp"
+                                            initialProperties:nil];
+
+
+                                            axios.get('http://mechria.com/application/models/livreur',{
+                                                "headers": {
+                                                  'Content-Type': 'application/json',
+                                                }
+                                            }).then(response => {
+                                              console.log(response.data);
+                                            })
+                                            .catch(error => {
+                                              console.log(error);
+                                            });
