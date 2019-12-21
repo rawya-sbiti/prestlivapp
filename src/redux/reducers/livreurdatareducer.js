@@ -10,7 +10,6 @@ const initialState = {
   loading: false,
 };
 const livreurDataReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case LOGINLIVREUR: {
       return {

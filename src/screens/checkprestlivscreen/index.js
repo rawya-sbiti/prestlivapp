@@ -30,8 +30,8 @@ class CheckPrestLivScreen extends React.Component {
 
     const mapStateToProps = (state) => {
       const {regions,villes,codespostales} = state.pickerdata;
-      const {error, loading, livreurdata} = state.livreur;
-      return {regions,villes,codespostales,error, loading, livreurdata};
+      const {error, loading, livreur} = state.livreur;
+      return {regions,villes,codespostales,error, loading, livreur};
     };
 
     export default connect(

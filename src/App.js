@@ -2,18 +2,39 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {View,Text} from 'react-native';
-import {Screen1,SignInScreen,RegisterScreen,SplashScreen,CheckPrestLivScreen} from './screens';
+import {Screen1,SignInScreen,RegisterScreen,SplashScreen,CheckPrestLivScreen,HomeScreen,CommandeDetailScreen} from './screens';
+import {CustomDrawerItem} from './components'
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import {store, persistor} from './redux/store';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-export default function App() {
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
+export default function App() {
+  const MainStack = createDrawerNavigator({
+    Commandes: {
+      screen: HomeScreen,
+    },
+    Photos:
+    {
+      screen: CommandeDetailScreen
+    }
+  },{
+    initialRouteName: 'Commandes',
+    contentComponent: CustomDrawerItem,
+    drawerOpenRoute:'DrawerOpen',
+    drawerCloseRoute:'DrawerClose',
+    drawerToggleRoute:'DrawerToggle',
+    contentOptions: {
+      activeTintColor: '#000000',
+      activeBackgroundColor: '#e6e6e6',
+    }
+  });
 const Navigator = createSwitchNavigator(
   {
     AppLiv: {
-      screen: RegisterScreen,
+      screen: MainStack,
     },
     SplashScreen: {
       screen: SplashScreen,
